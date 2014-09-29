@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS `minimart`.`permission` ;
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `minimart`.`permission` (
   `id` INT NOT NULL ,
-  `name` VARCHAR(30) NULL ,
+  `name` VARCHAR(30) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -29,16 +29,16 @@ DROP TABLE IF EXISTS `minimart`.`user` ;
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `minimart`.`user` (
   `user_id` INT(11) NOT NULL DEFAULT '0' ,
-  `password` VARCHAR(30) NULL DEFAULT NULL ,
-  `email` VARCHAR(45) NULL DEFAULT NULL ,
-  `gender` INT(11) NULL DEFAULT NULL ,
-  `city` VARCHAR(30) NULL DEFAULT NULL ,
-  `address` VARCHAR(45) NULL DEFAULT NULL ,
-  `phone` VARCHAR(45) NULL DEFAULT NULL ,
-  `status` BIT NULL ,
-  `money` DOUBLE NULL ,
-  `sigup_time` DATE NULL ,
-  `image_link` TEXT NULL ,
+  `password` VARCHAR(30) NOT NULL ,
+  `email` VARCHAR(45) NOT NULL ,
+  `gender` INT(11) NOT NULL ,
+  `city` VARCHAR(30) NOT NULL ,
+  `address` VARCHAR(45) NOT NULL ,
+  `phone` VARCHAR(45) NOT NULL ,
+  `status` BIT NOT NULL ,
+  `money` DOUBLE NOT NULL ,
+  `sigup_time` DATE NOT NULL ,
+  `image_link` TEXT NOT NULL ,
   `permission_id` INT NOT NULL ,
   PRIMARY KEY (`user_id`) ,
   CONSTRAINT `fk_user_permission1`
@@ -62,8 +62,8 @@ DROP TABLE IF EXISTS `minimart`.`category` ;
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `minimart`.`category` (
   `category_id` VARCHAR(10) NOT NULL ,
-  `category_name` VARCHAR(45) NULL ,
-  `description` VARCHAR(45) NULL ,
+  `category_name` VARCHAR(45) NOT NULL ,
+  `description` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`category_id`) )
 ENGINE = InnoDB;
 
@@ -77,9 +77,9 @@ DROP TABLE IF EXISTS `minimart`.`product_type` ;
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `minimart`.`product_type` (
   `id` VARCHAR(30) NOT NULL ,
-  `name` VARCHAR(45) NULL ,
-  `description` VARCHAR(45) NULL ,
-  `category_id` VARCHAR(10) NULL ,
+  `name` VARCHAR(45) NOT NULL ,
+  `description` VARCHAR(45) NOT NULL ,
+  `category_id` VARCHAR(10) NOT NULL ,
   PRIMARY KEY (`id`) ,
   CONSTRAINT `fk_product_type_category1`
     FOREIGN KEY (`category_id` )
@@ -101,14 +101,15 @@ DROP TABLE IF EXISTS `minimart`.`product` ;
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `minimart`.`product` (
   `product_id` INT NOT NULL ,
-  `product_name` VARCHAR(45) NULL ,
-  `origin` VARCHAR(45) NULL ,
-  `price` DOUBLE NULL ,
-  `quantity` INT NULL ,
-  `update_time` DATE NULL ,
-  `rate` INT NULL ,
-  `status` INT NULL ,
-  `product_type` VARCHAR(30) NULL ,
+  `product_name` VARCHAR(45) NOT NULL ,
+  `origin` VARCHAR(45) NOT NULL ,
+  `price` DOUBLE NOT NULL ,
+  `quantity` INT NOT NULL ,
+  `update_time` DATE NOT NULL ,
+  `rate` INT NOT NULL ,
+  `status` INT NOT NULL ,
+  `product_type` VARCHAR(30) NOT NULL ,
+  `selled` INT NOT NULL ,
   PRIMARY KEY (`product_id`) ,
   CONSTRAINT `fk_product_product_type1`
     FOREIGN KEY (`product_type` )
@@ -130,8 +131,8 @@ DROP TABLE IF EXISTS `minimart`.`articles_type` ;
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `minimart`.`articles_type` (
   `id` INT NOT NULL ,
-  `type_name` VARCHAR(45) NULL ,
-  `description` TEXT NULL ,
+  `type_name` VARCHAR(45) NOT NULL ,
+  `description` TEXT NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -145,11 +146,11 @@ DROP TABLE IF EXISTS `minimart`.`articles` ;
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `minimart`.`articles` (
   `articles_id` INT NOT NULL ,
-  `title` VARCHAR(45) NULL ,
-  `create_time` DATETIME NULL ,
-  `content` VARCHAR(45) NULL ,
-  `user_create` INT NULL ,
-  `del_flag` BIT NULL ,
+  `title` VARCHAR(45) NOT NULL ,
+  `create_time` DATETIME NOT NULL ,
+  `content` VARCHAR(45) NOT NULL ,
+  `user_create` INT NOT NULL ,
+  `del_flag` BIT NOT NULL ,
   `articles_type` INT NOT NULL ,
   PRIMARY KEY (`articles_id`) ,
   CONSTRAINT `fk_articles_articles_type1`
@@ -172,13 +173,13 @@ DROP TABLE IF EXISTS `minimart`.`order` ;
 SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `minimart`.`order` (
   `id` INT NOT NULL ,
-  `order_time` DATE NULL ,
-  `shipped_time` DATE NULL ,
-  `status` VARCHAR(15) NULL ,
-  `note` TEXT NULL ,
+  `order_time` DATE NOT NULL ,
+  `shipped_time` DATE NOT NULL ,
+  `status` VARCHAR(15) NOT NULL ,
+  `note` TEXT NOT NULL ,
   `user_id` INT(11) NOT NULL ,
-  `create_time` TIMESTAMP NULL ,
-  `delete_time` VARCHAR(45) NULL ,
+  `create_time` TIMESTAMP NOT NULL ,
+  `delete_time` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) ,
   CONSTRAINT `fk_order_user1`
     FOREIGN KEY (`user_id` )
@@ -224,8 +225,8 @@ SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `minimart`.`order_details` (
   `product_id` INT NOT NULL ,
   `order_id` INT NOT NULL ,
-  `quantity` INT NULL ,
-  `price_each` DOUBLE NULL ,
+  `quantity` INT NOT NULL ,
+  `price_each` DOUBLE NOT NULL ,
   PRIMARY KEY (`product_id`, `order_id`) ,
   CONSTRAINT `fk_product_has_order_product1`
     FOREIGN KEY (`product_id` )
@@ -271,7 +272,7 @@ CREATE  TABLE IF NOT EXISTS `minimart`.`log_data_history` (
   `log_id` INT NOT NULL ,
   `user_id` INT(11) NOT NULL ,
   `action_type` VARCHAR(45) NOT NULL ,
-  `data_row` VARCHAR(45) NULL ,
+  `data_row` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`log_id`) ,
   CONSTRAINT `fk_log_data_history_action1`
     FOREIGN KEY (`action_type` )
