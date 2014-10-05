@@ -18,8 +18,8 @@ class Model_DBCommon extends Zend_Db_Table {
     public function execQuery($sql) {
     	try {
     		$query = $this->_db->query($sql);
-    		//return $this->_db->fetchAll($query);
-    		echo $sql;
+    		return $this->_db->fetchAll($query)->toArray();
+    		//echo $sql;
     	} catch (Exception $e) {
     		var_dump($e);
     	}
