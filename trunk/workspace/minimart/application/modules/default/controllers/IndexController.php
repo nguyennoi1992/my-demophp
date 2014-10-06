@@ -20,14 +20,14 @@ class IndexController extends Zend_Controller_Action {
         $this->view->icon_ja=$baseurl."/templates/client/images/icon_ja.png";
         $this->view->icon_en=$baseurl."/templates/client/images/icon_en.png";
 
-        echo $this->view->headLink ()->appendStylesheet ( $baseurl."/templatestemplatestemplatestemplatestemplatestemplatestemplates/default/script/styleNews.css" );
-        echo $this->view->headLink ()->appendStylesheet ( $baseurl."/templatestemplatestemplatestemplatestemplatestemplates/default/script/boxy.css" );       
-        echo $this->view->headLink ()->appendStylesheet ( $baseurl."/templatestemplatestemplatestemplatestemplates/default/script/styleNews.css" );
-        echo $this->view->headLink ()->appendStylesheet ( $baseurl."/templatestemplatestemplatestemplates/default/script/fancybox.css" );       
+        echo $this->view->headLink ()->appendStylesheet ( $baseurl."/templates/default/script/styleNews.css" );
+        echo $this->view->headLink ()->appendStylesheet ( $baseurl."/templates/default/script/boxy.css" );       
+        echo $this->view->headLink ()->appendStylesheet ( $baseurl."/templates/default/script/styleNews.css" );
+        echo $this->view->headLink ()->appendStylesheet ( $baseurl."/templates/default/script/fancybox.css" );       
 
-        echo $this->view->headscript ()->appendFile ( $baseurl."/templatestemplatestemplates/default/script/jquery.js", "text/javascript" );
-        echo $this->view->headscript ()->appendFile ( $baseurl."/templatestemplates/default/script/fancybox.js", "text/javascript" );
-        echo $this->view->headscript ()->appendFile ( $baseurl."/templates/default/script/common.js", "text/javascript" );
+        echo $this->view->headscript ()->appendFile ( $baseurl."/templates/default/js/jquery.js", "text/javascript" );
+        echo $this->view->headscript ()->appendFile ( $baseurl."/templates/default/js/fancybox.js", "text/javascript" );
+        echo $this->view->headscript ()->appendFile ( $baseurl."/templates/default/js/common.js", "text/javascript" );
         echo $this->view->headscript ()->appendFile ( $baseurl."/templates/includes/js/common.js", "text/javascript" );
         echo $this->view->headscript ()->appendFile ( $baseurl."/templates/includes/js/swfobject.js", "text/javascript" );
 
