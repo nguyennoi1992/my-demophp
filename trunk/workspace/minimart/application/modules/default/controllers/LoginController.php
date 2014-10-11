@@ -7,8 +7,8 @@ class LoginController extends Zend_Controller_Action
 
     public function init ()
     {
-//         session_destroy();
-        /* Initialize action controller here */
+        session_destroy();
+        // Initialize action controller here
         $this->_model = new Model_DAO();
     }
 
@@ -16,7 +16,7 @@ class LoginController extends Zend_Controller_Action
     {
         // $messageUser='';
         // $messagePassword='';
-        $user = '';
+      /*  $user = '';
         $password = '';
         $result = '';
         $this->view->message = '';
@@ -58,6 +58,6 @@ class LoginController extends Zend_Controller_Action
         else if ($result[0][0]['code'] == -1)
             $this->view->message = "Error pass";
         else if ($result[0][0]['code'] == 0)
-            $this->view->message = "Error user";
+            $this->view->message = "Error user";*/
     }
 }
