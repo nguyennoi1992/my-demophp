@@ -7,10 +7,10 @@
   <link rel="canonical" href="http://minimart.com.vn/"/>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="RESOURCE-TYPE" content="DOCUMENT" />
+  <meta content="DOCUMENT" name="RESOURCE-TYPE" />
   
-  <link rel="stylesheet" href="../../public/templates/default/script/bootstrap.min.css" type="text/css" />
-  <link rel="stylesheet" href="../../public/templates/default/script/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../public/templates/default/script/bootstrap.min.css" type="text/css"/>
+  <link rel="stylesheet" href="../../public/templates/default/script/style.css" type="text/css"/>
 </head>
 <?php
 
@@ -22,9 +22,8 @@ if(isset($this->errorMessage))
 <div class="container">
 	<div class="row">
 		
-		<div class="col-lg-6 col-md-6 col-sm-6">
+		<div class="col-lg-12 col-md-12 col-sm-12">
 			<h1> <a href="http://localhost/minimart/minimart/public/"> <img style=" margin-top: -9px;" src="http://minimart.com.vn/template/default/images/homefinal.png" alt="" /> </a> »  Đăng ký</h1>
-			<div style="padding: 5px 0px 10px;" id="login_title"><b>Thông tin khách hàng đăng nhập hệ thống</b></div>
 			<form role="form">
 			  <div class="form-group">
 			    <label for="exampleInputEmail1">Đại chỉ email *</label>
@@ -34,14 +33,40 @@ if(isset($this->errorMessage))
 			    <label for="exampleInputPassword1">Mật khẩu *</label>
 			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
 			  </div>
-			  <button type="submit" class="btn btn-warning">Đăng nhập</button>
+			  <div class="form-group">
+			    <label for="exampleInputPassword1">Nhập lại mật khẩu *</label>
+			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputFile">Ảnh đại diện (nếu có)</label>
+			    <input type="file" id="exampleInputFile" />
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputPassword1">Họ và tên *</label>
+			    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+			  </div>
+			  <div class="form-group">
+			    <label>Giới tính</label>
+			    <input type="checkbox">Nam</input>
+			    <input type="checkbox">Nữ</input>
+			  </div>
+			  <div class="form-group">
+			    <label>Tỉnh/tp</label>
+			    <select class="form-control">
+			    	<option selected="selected">Hà Nội</option>
+			    	<option>TP HCM</option>
+			    </select>
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputPassword1">Địa chỉ</label>
+			    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Đại chỉ" />
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputPassword1">Điện thoại di động *</label>
+			    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Điện thoại di động" />
+			  </div>
+			  <button type="submit" class="btn btn-warning">Submit</button>
 			</form>
-		</div>
-		<div class="col-lg-6 col-md-6 col-sm-6">
-			<div style="padding: 54px 0px 10px;"><b>Bạn chưa là thành viên</b></div>
-			 Đăng ký là thành viên để hưởng nhiều lợi ích và đặt mua hàng dễ dàng hơn.
-			 <p><a style="color:#b00; font-weight: bold; text-decoration: none;" href="/dang-ky" title="Click đăng ký tài khoản miễn phí">Đăng ký tài khoản</a></p>
 		</div>
 	</div>
 </div>
-</html>
