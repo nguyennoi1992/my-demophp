@@ -1,0 +1,235 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html" />
+    <meta charset="uft-8"/>
+<?php 
+echo $this->headLink ();
+echo $this->headscript ();
+?>
+<title>User Management</title>
+
+</head>
+
+
+<body>
+		<div style=' width: 100%; margin: auto;'>
+		<fieldset id="s2_2_fieldset" style='margin: auto;'>
+		<a href="Logout" title='Log Out'>
+            <img src="../templates/client/images/logout_icon.jpg" class="" style='float: right;margin-right: 10px; border: 1px solid #A9D18E; width:30px; height: 30px;'  />
+        </a>
+
+			<div class='content_center' align="center">
+				<div id='s2.2_body_title' align="center" style="height: 40px; font-size: 23px">
+					<h1><?php echo $this->language['user_management'];?></h1>
+				</div>
+
+				<div id='top' style="">
+					 <table>
+                    	<tbody>
+                        	<tr style='height:30px'><td width="55%" class='top_tr_userid' >
+								 <p><?php echo $this->language['user_id'],' : ';?></p> <input disabled type="text"	size="40px" value='<?php echo $this->info_id; ?>' style="margin-left: 5px;">
+								</td>							
+							</tr>
+							<tr><td  class='top_tr_username'>
+                            	<p><?php echo $this->language['user_name'], ' : ';?></p> <input disabled type="text"	size="40px" value='<?php echo $this->info_name; ?>'>
+								</td>							
+							</tr>
+						</tbody>
+					</table>
+				</div>
+        		<div id="navigation" style="width: 100%; margin-top: 10px;">
+                <ul>
+                    <li><a href="#" style="background: #00B050;"><?php echo $this->language['user_management'];?></a></li>
+                    <li><a href="S42"><?php echo $this->language['work_management'];?></a></li>
+                    <li><a href="S44"><?php echo $this->language['task_management'];?></a></li>
+                </ul>
+            </div>
+				<div class='clr'></div>
+				<div style="padding-bottom: 15px;">
+					<div style="float: left; margin-top: 10px;">
+						<form id='searchform' method='GET' action='S41'>
+							<span><input type="text" class="search square" name='searchquery'
+								value='<?php echo $this	->keyword; ?>' maxlength="88" placeholder='<?php echo $this->language['user_id'];echo ' , ';echo $this->language['user_name'];?>'>
+								<button class='buttonH'><?php echo $this->language['search']?></button></span>
+						</form>
+					</div>
+					<div>
+						<input id='save' class='buttonH' type="button" value="<?php echo $this->language['save']?>"
+							onclick="saveAllData()" style="float: right; margin-top: 10px;" >
+					</div>
+					<div style="padding-right: 26px;">
+						<input class='buttonH' type="button" value="<?php echo $this->language['delete_row']?>"
+							onclick="deleteRow('h_table_s411'); table_onload1('h_table_s411')" style="float: right; margin-top: 10px;">
+					</div>
+					<div style="padding-right: 26px;">
+						<input class='buttonH' type="button" value="<?php echo $this->language['add_row']?>"
+							onclick="insertRow()" style="float: right; margin-top: 10px;">
+					</div>
+					<div style="padding-right: 26px;">
+						<a href="s41"><input class='buttonH' type="button" value="<?php echo $this->language['reset']?>"
+							style="float: right; margin-top: 10px;"></a>
+					</div>
+					<!-- <div style="padding-right: 26px;"><input id='test' class='buttonH' type="button" value="TEST" style="float: right; margin-top: 10px;"></a></div> -->	
+					
+				</div>
+				<div class='clr'></div>
+				
+				<div id='id_mess'></div>
+				<div class='clr'></div>
+				<?php
+				$xxx = $this->count_row;
+				$yyy = $this->count_work;
+				$record = $this->record;
+				$work_name = $this->work_name;
+				$group = $this->all_group;
+				$all_permission = $this->all_permission;
+				$all_position = $this->all_position;
+				
+// 				echo '<pre>';
+// 				print_r($all_permission);
+// 				print_r($record);
+// 				echo '</pre>';
+				if (!empty($record)){ ?>
+				<form method='POST' action='#' id='s41'>
+					<div id='table_s41'>
+						<table id='h_table_s411' class='table_report table_shadow'
+							style="width: 1250px; /*border-color: green;*/" border='1' >
+							<tr id='table_report_title'>
+								<th width='32px'><input type='checkbox' name="list" id='cb'
+									class="css-checkbox" onClick='this.value=check(this.form.list)' /><label
+									for='cb' class="css-label"></label></th>
+								<th width='100px'><?php echo $this->language['user_id']; ?></th>
+								<th width='125px'><?php echo $this->language['password']; ?></th>
+								<th width='180px'><?php echo $this->language['user_name']; ?></th>
+								<th width='110px'><?php echo $this->language['permission']; ?></th>
+								<th width='180px'><?php echo $this->language['email']; ?></th>
+								<th width='110px'><?php echo $this->language['position']; ?></th>
+								<th width='100px'><?php echo $this->language['group1']; ?></th>
+								<th width='160px'><?php echo $this->language['work']; ?></th>
+								<th width=''><?php echo $this->language['status']; ?></th>
+								</td>
+							</tr>
+
+<?php
+for($i = 0; $i < $xxx; $i ++) {
+	$group_id = $record [$i] ['group_id'];
+	$group_name = $record [$i] ['group_name'];
+	$act_flag = $record [$i] ['active'];
+	$active = "Active";
+	if ($act_flag == 0) {
+		$active = "Inactive";
+	}
+	
+// 	$group_id = $record [$i] ['group_name'];
+	$this->active = "<option value='" . $act_flag . "' disabled selected style='display: none;'>" . $active . "</option>";
+	
+	// Display the result of the array
+	echo "<tr id='row_" . ($i + 100) . "' >";
+	?>
+		<!-- Check Box -->
+		<td><input type="checkbox" name="list"
+			id='<?php echo 'checkbox' . $i; ?>' class="css-checkbox" /><label
+			for='<?php echo 'checkbox' . $i; ?>' class="css-label"></label></td>
+			
+		<!-- UserId -->
+		<td><input class='txtF userId' name='user-id' type='text' id='<?php echo "user_id_" . ($i + 100); ?>'
+			value='<?php echo $record [$i] ['user_id'];?>' <?php echo 'disabled';?>></td>
+			
+		<!-- Password -->	
+		<td><input class='txtF password' name='password' type='text'
+			id='<?php echo "password_" . ($i + 100); ?>' value='<?php echo $record [$i] ['password']; ?>'></td>
+			
+		<!-- Username -->
+		<td><input class='txtF userName' name='' type='text' id='<?php echo "username_" . ($i + 100); ?>'
+			value='<?php echo $record [$i] ['user_name']; ?>'></td>
+			
+		<!-- Permission -->
+		<td><select id='<?php echo 'cbbox_permission' . $i; ?>' class='permission'>
+		<option value='<?php echo $record [$i]['permission_id']?>' disabled selected style='display: none;'><?php echo $record [$i]['permission_name']?></option>
+		<?php foreach ($all_permission as $item):?>
+		     <option value='<?php echo $item['permission_id'];?>'><?php echo $item['permission_name'];?></option>
+		<?php endforeach;?>
+		</select><label for='<?php echo 'cbbox_permission' . $i; ?>' class="css-label-cbbox"></label></td>
+			
+		<!-- Email -->
+		<td><input class='txtF email' name='email' type='text'
+			id='<?php echo "email_" . ($i + 100); ?>' value='<?php echo $record [$i] ['email']; ?>' onkeyup="return validateEmailCell(this.id, this.value)"></td>
+	
+		<!-- Possition -->
+		<td><select id='<?php echo 'cbbox_position' . $i; ?>' class='position'>
+		<option value='<?php echo $record [$i]['position_id']?>' disabled selected style='display: none;'><?php echo $record [$i]['position_name']?></option>
+		<?php echo $record [$i] ['position_name'];?>
+		<?php foreach ($all_position as $item):?>
+		     <option value='<?php echo $item['position_id'];?>'><?php echo $item['position_name'];?></option>
+		<?php endforeach;?>
+		</select><label for='<?php echo 'cbbox_position' . $i; ?>' class="css-label-cbbox"></label></td>
+
+		<!-- Group -->
+		<td><select id='<?php echo 'cbbox_group' . $i; ?>' class='group_name'>
+		<option value='<?php echo $record [$i]['group_id']?>' disabled selected style='display: none;'><?php echo $record [$i]['group_name']?></option>
+		<?php foreach ($group as $item):?>
+		     <option value='<?php echo $item['group_id'];?>'><?php echo $item['group_name'];?></option>
+		<?php endforeach;?>
+		</select><label for='<?php echo 'cbbox_group' . $i; ?>' class="css-label-cbbox"></label></td>
+		
+		<!-- Work -->
+		<td><select id='<?php echo 'cbbox_work' . $i; ?>'>
+		<?php foreach ($work_name as $item):?>
+			<?php
+			if ($item['user_id'] == $record [$i] ['user_id']) {?>
+						<option><?php echo $item['work_name']; ?></option>
+					<?php }	?>
+			<?php endforeach;?></select><label for='<?php echo 'cbbox_work' . $i; ?>' class="css-label-cbbox"></label></td>
+		
+		<!-- Status -->
+		<td><select id='<?php echo 'cbbox_status' . $i; ?>' class='status'>
+		<?php echo $this->active; ?>
+    		<option value='1'>Active</option>
+    		<option value='0'>Inactive</option>
+			</select><label for='<?php echo 'cbbox_status' . $i; ?>' class="css-label-cbbox"></label></td>
+		</tr>
+<?php
+}
+?>                
+                
+            </table>
+					</div>
+				</form>
+			<?php } else {?>
+            <div id='no_result'><p style="padding-top:.33em"> Your search - <b><?php echo $this->keyword;?></b> - did not match any documents.  </p>
+	                <p style="margin-top:1em">Suggestions:</p>
+	                <ul style="margin-left:1.3em;margin-bottom:2em">
+	                	<li>Make sure that all words are spelled correctly.</li>
+	                	<li>Try different keywords.</li>
+	                	<li>Try more general keywords.</li></ul></div>
+            <?php }?>
+			</div>
+
+			<br> <br> <br>
+		</fieldset>
+		</div>
+		
+<!-- Combo Box for js -->
+	<div id='groupForJs' class='hiden'>
+		<?php foreach ($group as $item):?>
+		     <option value='<?php echo $item['group_id'];?>'><?php echo $item['group_name'];?></option>
+		<?php endforeach;?></div>
+	</div>
+	<div id='permissionForJs' class='hiden'>
+		<?php foreach ($all_permission as $item):?>
+		     <option value='<?php echo $item['permission_id'];?>'><?php echo $item['permission_name'];?></option>
+		<?php endforeach;?></div>
+	<div id='positionForJs' class='hiden'>
+		<?php foreach ($all_position as $item):?>
+		     <option value='<?php echo $item['position_id'];?>'><?php echo $item['position_name'];?></option>
+		<?php endforeach;?></div>
+		
+<script type="text/javascript">
+table_onload1('h_table_s411');
+$("#test").confirm();
+
+</script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+</body>
+</html>
