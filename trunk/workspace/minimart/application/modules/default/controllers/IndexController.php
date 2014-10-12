@@ -8,7 +8,7 @@ class IndexController extends Zend_Controller_Action {
         // $resuilt=$model->selectDB('test','id');
 
         // print_r($resuilt);
-       // echo "query:".$query;
+       // "query:".$query;
 
         $baseurl = $this->_request->getbaseurl ();
         $this->_model = new Model_DAO();
@@ -20,21 +20,21 @@ class IndexController extends Zend_Controller_Action {
         $this->view->icon_ja=$baseurl."/templates/client/images/icon_ja.png";
         $this->view->icon_en=$baseurl."/templates/client/images/icon_en.png";
 
-        echo $this->view->headLink ()->appendStylesheet ( $baseurl."/templates/default/script/styleNews.css" );
-        echo $this->view->headLink ()->appendStylesheet ( $baseurl."/templates/default/script/boxy.css" );       
-        echo $this->view->headLink ()->appendStylesheet ( $baseurl."/templates/default/script/styleNews.css" );
-        echo $this->view->headLink ()->appendStylesheet ( $baseurl."/templates/default/script/fancybox.css" );       
+        $this->view->headLink ()->appendStylesheet ( $baseurl."/templates/default/script/styleNews.css" );
+        $this->view->headLink ()->appendStylesheet ( $baseurl."/templates/default/script/boxy.css" );       
+        $this->view->headLink ()->appendStylesheet ( $baseurl."/templates/default/script/styleNews.css" );
+        $this->view->headLink ()->appendStylesheet ( $baseurl."/templates/default/script/fancybox.css" );       
 
-        echo $this->view->headscript ()->appendFile ( $baseurl."/templates/default/js/jquery.js", "text/javascript" );
-        echo $this->view->headscript ()->appendFile ( $baseurl."/templates/default/js/fancybox.js", "text/javascript" );
-        echo $this->view->headscript ()->appendFile ( $baseurl."/templates/default/js/common.js", "text/javascript" );
-        echo $this->view->headscript ()->appendFile ( $baseurl."/templates/includes/js/common.js", "text/javascript" );
-        echo $this->view->headscript ()->appendFile ( $baseurl."/templates/includes/js/swfobject.js", "text/javascript" );
+        $this->view->headscript ()->appendFile ( $baseurl."/templates/default/js/jquery.js", "text/javascript" );
+        $this->view->headscript ()->appendFile ( $baseurl."/templates/default/js/fancybox.js", "text/javascript" );
+        $this->view->headscript ()->appendFile ( $baseurl."/templates/default/js/common.js", "text/javascript" );
+        $this->view->headscript ()->appendFile ( $baseurl."/templates/includes/js/common.js", "text/javascript" );
+        $this->view->headscript ()->appendFile ( $baseurl."/templates/includes/js/swfobject.js", "text/javascript" );
 
     }
 
     public function indexAction() {
-        // echo "ok";
+        // "ok";
     }
     
 }
