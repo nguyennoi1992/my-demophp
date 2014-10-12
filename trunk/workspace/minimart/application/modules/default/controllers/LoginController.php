@@ -12,8 +12,7 @@ class LoginController extends Zend_Controller_Action
         $this->_model = new Model_DAO();
     }
 
-    public function indexAction ()
-    {
+    public function indexAction (){
         // $messageUser='';
         // $messagePassword='';
       /*  $user = '';
