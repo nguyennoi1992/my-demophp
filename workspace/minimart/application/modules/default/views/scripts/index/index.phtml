@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php
-$this->render("../_templates/header.phtml");
+echo $this->render("_templates/header.phtml");
 ?>
 <body>
  <script>
@@ -12,7 +12,6 @@ $this->render("../_templates/header.phtml");
   
   ga('create', 'UA-52574934-1', 'auto');
   ga('send', 'pageview');
-  
 </script>
 <div id="main">
   <div id="main_header">
@@ -22,23 +21,9 @@ $this->render("../_templates/header.phtml");
       </div>
     </div>
     <div id="right_header"> 
-      <div id="top_right_menu">
-        <span>Xin chào, </span>
-        
-        <a href="/dang-nhap">Đăng nhập</a> <span>|</span>
-        <a href="/dang-ky">Đăng ký</a> <span>|</span> 
-        
-        <a href="/">Trang chủ</a> <span>|</span>
-        <a href="/tin-khuyen-mai.html">Tin khuyến mãi</a> <span>|</span>
-        <a href="/gioi-thieu">Giới thiệu</a> <span>|</span>
-        <a href="/lien-he">Liên hệ</a>
-      </div>
-      <!--div id="live_chat">
-        <img alt="" src="/minimart/public/templates/default/images/phone.png" />
-        <span>Hỗ trợ</span>
-        <a href="ymsgr:sendIM?minimart@cskh" rel="nofollow" style="margin-top:3px;"><img src="http://opi.yahoo.com/online?u=minimart@cskh&t=1" /></a>
-        <a href="skype:minimart@cskh?chat"><img src="http://mystatus.skype.com/smallclassic/minimart" /></a>
-      </div-->
+      <?php
+      echo $this->render("_templates/menu.phtml");
+      ?>
       <ul id="cs_header">
         <li><img src="/minimart/public/templates/default/images/lcpp.jpg" alt=""/></li>
         <li>
@@ -60,44 +45,9 @@ $this->render("../_templates/header.phtml");
         <div id="fields">
           <div id="search_text"> Tìm kiếm</div>
           <form method="get" action="/tim" enctype="multipart/form-data">
-            <div id="dropdown">
-              <select name="scat_id" id="jumpMenu">
-                <option>Tất cả danh mục</option>
-
-                <option value="20">Thực phẩm tươi sống</option>
-
-                <option value="19">Rau, củ, quả</option>
-
-                <option value="27">Đồ dùng gia dụng</option>
-
-                <option value="22">Đồ uống, bánh kẹo</option>
-
-                <option value="21">Thực phẩm ăn liền</option>
-
-                <option value="42">Đường, sữa, bột ngũ cốc</option>
-
-                <option value="38">Gia vị, dầu ăn, mắm</option>
-
-                <option value="37">Gạo, Đồ khô</option>
-
-                <option value="28">Đồ điện gia dụng</option>
-
-                <option value="25">Hóa mỹ phẩm</option>
-
-                <option value="26">Mỹ phẩm</option>
-
-                <option value="30">Khăn giấy</option>
-
-                <option value="31">Sản phẩm may mặc</option>
-
-                <option value="29">Mẹ và Bé</option>
-
-                <option value="32">Hàng nhập khẩu</option>
-
-                <option value="45">Thức ăn cho vật nuôi</option>
-
-              </select>
-            </div>
+            <?php
+            echo $this->render("_templates/categories.phtml")
+            ?>
             <div id="search_field" class="ui-widget">
               <input type="text" name="q" class="searchboxtext" placeholder="Gõ từ khóa tìm kiếm" />
             </div>
@@ -870,72 +820,42 @@ $this->render("../_templates/header.phtml");
     </div><!--right_container-->
   </div><!--main_container-->
   <div class="clr"></div>
-  <div id="copyright"><span>&copy; 2014 Minimart.com.vn - Siêu thị gia đình trực tuyến!</span></div>
-  <div id="footer">
-    <div class="box_footer" id="address_footer">
-      <h3>Công ty TNHH KDC</h3>
-      Địa chỉ: Tầng 5 Tòa nhà Sentinel Place,<br/>
-      41A Lý Thái Tổ, Hoàn Kiếm, Hà Nội.<br/>
-      Tel: 04 66867668<br/>
-      Email: sales@minimart.com.vn<br/>
-      Website: <a href="www.minimart.com.vn">www.minimart.com.vn</a>
-    </div><!--box_footer-->
-    <div class="box_footer">
-      <h3>Thông tin Minimart</h3>
-      <ul>
-        <li><a href="/page/bao-chi-viet-ve-chung-toi">Báo chí viết về chúng tôi</a> </li>
-        <li><a href="/page/y-kien-khach-hang">Ý kiến khách hàng</a> </li>
-        <li><a href="/tin-tuc">Tin tức</a> </li>
-        <li><a href="/lien-he">Liên hệ</a> </li>
-      </ul>
-    </div><!--box_footer-->
-    <div class="box_footer">
-      <h3>Hỗ trợ khách hàng</h3>
-      <ul>
-        <li><a href="/page/huong-dan-chon-hang">Hướng dẫn chọn hàng</a> </li>
-        <li><a href="/page/huong-dan-mua-hang">Hướng dẫn mua hàng</a> </li>
-        <li><a href="/page/chinh-sach-van-chuyen">Chính sách vận chuyển</a> </li>
-        <li><a href="/page/chinh-sach-doi-tra-hang">Chính sách đổi trả hàng</a> </li>
-      </ul>
-    </div><!--box_footer-->
-    <div class="box_footer">
-      <h3>Kết nối với Minimart</h3>
-      <div id="social_footer">
-        <a href="http://www.facebook.com/minimart.com.vn"><img src="/minimart/public/templates/default/images/icon_facebook.png" alt="Minimart.com.vn" /> </a>
-        <a href=""><img src="/minimart/public/templates/default/images/icon_twitter.png" alt="Minimart.com.vn" /> </a>
-        <a href=""><img src="/minimart/public/templates/default/images/icon_google.png" alt="Minimart.com.vn" /> </a>
-      </div>
-    </div><!--box_footer-->
-    <div class="box_footer">
-      <h3>Chấp nhận thanh toán</h3>
-      <a href=""><img src="/minimart/public/templates/default/images/icon_pay.png" alt="" /> </a>
-    </div><!--box_footer-->
-  </div>
-  <div class="clr"></div>
-  <script> 
 
-    function subscribe_newsletter(){
-      var email = document.getElementById('email_newsletter').value;
-      if(email.length > 3){
-        $.post("/ajax/register_for_newsletter.php", {email:email}, function(data) {
-          if(data=='success') {alert("Quý khách đã đăng ký thành công "); }
-          else if(data=='exist'){ alert("Email này đã tồn tại");}
-          else { alert('Lỗi xảy ra, vui lòng thử lại '); }
+  <!--
+  include footer
+  //begin
+-->
+<?php
+echo $this->render("_templates/footer.phtml")
+?>
+  <!--
+  //end
+-->
+<div class="clr"></div>
+<script> 
 
-        });
-      }else{alert('Vui lòng nhập địa chỉ email');}
-    }
+  function subscribe_newsletter(){
+    var email = document.getElementById('email_newsletter').value;
+    if(email.length > 3){
+      $.post("/ajax/register_for_newsletter.php", {email:email}, function(data) {
+        if(data=='success') {alert("Quý khách đã đăng ký thành công "); }
+        else if(data=='exist'){ alert("Email này đã tồn tại");}
+        else { alert('Lỗi xảy ra, vui lòng thử lại '); }
 
-    $(document).ready(function(){
-      $(".close_letter").click(function(){
-        $("#news_letter_fix").fadeOut();
-        return false;
       });
-      $("#icon_mail_fix").click(function(){
-        $("#news_letter_fix").fadeIn();
-      });
+    }else{alert('Vui lòng nhập địa chỉ email');}
+  }
+
+  $(document).ready(function(){
+    $(".close_letter").click(function(){
+      $("#news_letter_fix").fadeOut();
+      return false;
     });
-  </script>
+    $("#icon_mail_fix").click(function(){
+      $("#news_letter_fix").fadeIn();
+    });
+  });
+</script>
 
 <!--div id="icon_mail_fix"></div>
 <div id="news_letter_fix">
