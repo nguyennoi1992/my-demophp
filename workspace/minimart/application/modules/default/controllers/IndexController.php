@@ -10,7 +10,7 @@ class IndexController extends Zend_Controller_Action {
         // print_r($resuilt);
        // "query:".$query;
 
-        $baseurl = $this->_request->getbaseurl ();
+        
         $this->_model = new Model_DAO();
         $baseurl = $this->_request->getbaseurl ();
         Zend_Registry::set('baseurl', $baseurl);
