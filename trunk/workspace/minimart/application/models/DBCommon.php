@@ -8,18 +8,18 @@ class Model_DBCommon extends Zend_Db_Table {
     protected $_db;
     public $sql;
     public function __construct() {
-    	$this->_db = Zend_Db_Table::getDefaultAdapter();
+    	$this->_db = Zend_Registry::get('db');
     }
     /**
      * execute sql query
      * @param string $sql
      * @return Ambigous <multitype:, multitype:mixed Ambigous <string, boolean, mixed> >
      */
-    public function execQuery($sql) {
+    public function execQuery($sql){
     	try {
     		$query = $this->_db->query($sql);
-    		return $this->_db->fetchAll($query)->toArray();
-    		//echo $sql;
+    		$val=$query->fetchAll();
+    		return $val;
     	} catch (Exception $e) {
     		var_dump($e);
     	}
