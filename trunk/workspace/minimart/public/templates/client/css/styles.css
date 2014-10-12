@@ -1,6 +1,62 @@
 @CHARSET "ISO-8859-1";
-.save_message {
-	
+/*------------Minimart admin Css-------------------------------------*/
+.admin_main{
+	width: 1024px;
+	margin: auto;
+	height: 40px;
+}
+.heading{
+	width: 100%;
+	text-align: center;
+}
+.admin_content{
+	width: 100%;
+}
+.button_layout{
+	width: 100%;
+}
+.admin_content_table{
+	width: 100%;
+}
+.square {
+	width: 193px;
+	padding-left: 4px;
+	border-radius: 4px;
+	border-color: #A9D18E;
+}
+input.search.square {
+    height: 26px;
+}
+.admin_table {
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.admin_table  th {
+    text-align: center;
+    background-color: #A9D18E ;
+    height:45px;   
+    font-size:18px;
+}
+
+.admin_table  tr {
+	background: #b8d1f3;
+}
+
+.admin_table  td{
+    text-align: center;
+    border: 1px white solid;
+    background-color: #D5E3CF;
+    height: 45px;
+}
+
+.admin_table tr:hover {
+   	background: #A3CCA3;;
+}
+
+/*--------------- css older --------------*/
+.save_message{
 	text-shadow:0 0 10px #fff, 0 0 20px green, 0 0 30px green, 0 0 40px #BFF584, 0 0 50px #BFF584, 0 0 60px #BFF584, 0 0 70px #BFF584;
 	font-size:18px;
 	color: green;
@@ -309,8 +365,7 @@ input{
 	background: #00B050;
 }
 #ddtabs1{
-    width: 900px;
-    margin-top:5px;
+    width: 100%;
     margin: 20px auto;
     height: 42px;
     
