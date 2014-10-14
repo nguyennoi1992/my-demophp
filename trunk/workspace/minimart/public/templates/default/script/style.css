@@ -476,11 +476,12 @@ a.xemnhanh {
 	width: 50% !important;
 	display: inline-block;
 	margin-left: 10px;
+	margin-bottom: 15px;
 }
 label {
 	width: 150px;
 	font-size: 12px;
-	font-weight: 300;
+	font-weight: bold;
 }
 input[type="file"] {
 	display: inline-block;
@@ -496,10 +497,57 @@ h1 {
     font-weight: bold;
     text-transform: uppercase;
 }
+/*
+.zend_form #email-label, .zend_form #email-element {
+	float: left;
+	clear: right;
+}
+.zend_form #password-label, .zend_form #password-element {
+	float: left;
+	clear: both;
+}
+.zend_form #confirmPassword-label, .zend_form #confirmPassword-element {
+	display: inline;
+	clear: both;
+}
+.zend_form #image_link-label, .zend_form #image_link-element {
+	display: inline;
+	clear: both;
+}
+.zend_form #gender0-label, .zend_form #gender0-element {
+	display: inline;
+	clear: both;
+}
+.zend_form #gender1-label, .zend_form #gender1-element {
+	display: inline;
+	clear: both;
+}
+.zend_form #city-label, .zend_form #city-element {
+	display: inline;
+	clear: both;
+}
+.zend_form #address-label, .zend_form #address-element {
+	display: inline;
+	clear: both;
+}
+.zend_form #phone-label, .zend_form #phone-element {
+	display: inline;	
+}
 
-
-
-
-
+*/
+#location{
+	margin-bottom: 15px;
+	border-bottom: solid 1px #ccc;
+	padding-bottom: 6px;
+}
+br {
+	display: none;
+}
+#image_link {
+	margin-bottom: 15px;
+}
+#gender-element {
+	margin-bottom: 15px;
+}
 
 
