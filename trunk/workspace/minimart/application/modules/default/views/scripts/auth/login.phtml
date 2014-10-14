@@ -1,0 +1,26 @@
+<?php
+if(isset($this->errorMessage)){
+	echo $this->errorMessage;
+}
+?>
+<div class="container">
+<div class="row">
+<div id="location">
+	<a href=""><img style="float: left;margin-right: 5px;" src="http://minimart.com.vn/template/default/images/homefinal.png" alt="" /></a> <span style="display: inline;">»</span> <h1 style="display: inline;">Sign up</h1>
+</div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6">
+<div style="padding: 5px 0px 10px;" id="login_title"><b>Thông tin khách hàng đăng nhập hệ thống</b></div>
+<?php
+	echo $this->form;
+?>
+<a href="<?=$this->url(array('controller'=>'auth','action'=>'signup'))?>">New users click here?</a>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6">
+	<td valign="top" style="line-height: 18px;">
+    	<div style="padding: 5px 0px 10px;"><b>Bạn chưa là thành viên</b></div>
+        Đăng ký là thành viên để hưởng nhiều lợi ích và đặt mua hàng dễ dàng hơn.
+        <p><a style="color:#b00; font-weight: bold; text-decoration: none;" href="http://localhost/minimart/minimart/public/auth/signup" title="Click đăng ký tài khoản miễn phí">Đăng ký tài khoản</a></p>
+	</td>
+</div>
+</div>
