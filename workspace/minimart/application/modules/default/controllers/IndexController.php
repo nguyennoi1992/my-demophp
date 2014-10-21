@@ -1,5 +1,11 @@
 <?php
 class IndexController extends Zend_Controller_Action {
+
+    /*
+     *
+     *
+     */
+    
     public function init() {
        // $this->_sess=new Zend_Session_Namespace();
         /* Initialize action controller here */
@@ -32,6 +38,11 @@ class IndexController extends Zend_Controller_Action {
         $this->view->headscript ()->appendFile ( $baseurl."/templates/includes/js/swfobject.js", "text/javascript" );
 
     }
+
+    /*
+     *
+     *
+     */
 
     public function indexAction() {
         $model = new Model_DBCommon();
