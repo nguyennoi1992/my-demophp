@@ -1,24 +1,25 @@
 <?php
 class Model_DAO extends Zend_Db_Table {
-    public $__connection;
+	public $__connection;
     /**
      * 郢晢ｿｽ�ｽ郢ｧ�ｿ郢晏生�ｽ郢ｧ�ｹ邵ｺ�ｮ隴�ｿｽ�ｭ蜉ｱ縺慕ｹ晢ｽｼ郢晢ｿｽ
      * @var    string $_charCode
      * @access private
      */
     protected $_dbConfig = array(
-            'server' => 'localhost',
-     		'database' => 'minimart',
-            'user' => 'root',
-            'password' => ''
-    );
+    	'server' => 'localhost',
+    	'database' => 'minimart',
+    	'user' => 'root',
+    	'password' => '',
+    	'driver_options' => array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8;')
+    	);
     /**
      * create connection
     */
     public function __construct() {
-        if (!$this->__connect()) {
-            die;
-        }
+    	if (!$this->__connect()) {
+    		die;
+    	}
         ///$this->initText();
     }
     /**
@@ -27,22 +28,22 @@ class Model_DAO extends Zend_Db_Table {
      * @return boolean
      */
     public function __connect() {
-        try {
+    	try {
             $this->__connection = new PDO(
                     'mysql:server='.$this->_dbConfig['server'].';database='.$this->_dbConfig['database'].';',
                     $this->_dbConfig['user'],
                     $this->_dbConfig['password']
             );
             $this->__connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return true;
-        } catch (PDOException $e) {
-            echo 'Connection failed: ' . $e->getMessage();
-            return false;
-        }
+    		return true;
+    	} catch (PDOException $e) {
+    		echo 'Connection failed: ' . $e->getMessage();
+    		return false;
+    	}
     }
     
-   
- 
+
+
 	/** executeSql  function
 	 * @param string $sql
 	 * @param array $dataSet
@@ -117,49 +118,49 @@ class Model_DAO extends Zend_Db_Table {
 	 * @access public
 	 */
 	private function _executeSqlMultiSet($connection, $sql, &$dataSet, &$columnName) {
-	    try {
+		try {
 	        //SQL陞ｳ貅ｯ�｡�ｽ(郢晢ｿｽ�ｽ郢ｧ�ｿ陷ｿ髢�ｽｾ�ｽ
-	        $dataReturn = $connection->query($sql);
+			$dataReturn = $connection->query($sql);
 	        //$dataSet = array();return true;
-	        $sqlError   = $connection->errorInfo();
-	        if ($sqlError[0] != '00000') {
-	            return(false);
-	        }
+			$sqlError   = $connection->errorInfo();
+			if ($sqlError[0] != '00000') {
+				return(false);
+			}
 	        //
-	        if ($dataReturn) {
+			if ($dataReturn) {
 	            //陷ｿ髢�ｽｾ蜉ｱ繝ｧ郢晢ｽｼ郢ｧ�ｿ隰ｨ�ｴ陟厄ｽ｢ -> 髫搾ｿｽ辟夐お蜈域｣｡郢ｧ�ｻ郢晢ｿｽ繝ｨ郢ｧ螳夲ｿｽ隲ｷ�ｮ
 	            $columnName = array(); //郢ｧ�ｫ郢晢ｽｩ郢晢ｿｽ骭占愾髢�ｽｾ遉ｼ逡�
 	            $dataSet    = array(); //驍ｨ蜈域｣｡郢ｧ�ｻ郢晢ｿｽ繝ｨ鬩滓ｦ奇ｿｽ陋ｹ荵溽舞
 	            $index      = 0;       //驍ｨ蜈域｣｡郢ｧ�ｻ郢晢ｿｽ繝ｨ郢ｧ�､郢晢ｽｳ郢晢ｿｽ繝｣郢ｧ�ｯ郢ｧ�ｹ
 	            do{
 	                //驍ｨ蜈域｣｡郢ｧ�ｻ郢晢ｿｽ繝ｨ鬯�ｿｽ�ｬ�｡陷ｿ謔ｶ�願怎�ｺ邵ｺ�ｽ
-	                $table = $dataReturn->fetchAll(PDO::FETCH_ASSOC);
+	            	$table = $dataReturn->fetchAll(PDO::FETCH_ASSOC);
 	                //
-	                if ($table) {
+	            	if ($table) {
 	                    //陋ｻ諤憺倹陷ｿ髢�ｽｾ�ｽ
-	                    if (!$this->_executeSqlGetColumnName($table, $columnName, $index, $message)) {
-	                        return(false);
-	                    }
+	            		if (!$this->_executeSqlGetColumnName($table, $columnName, $index, $message)) {
+	            			return(false);
+	            		}
 	                    //郢晢ｿｽ�ｽ郢晄じﾎ晁愾髢�ｽｾ�ｽ
-	                    if (!$this->_executeSqlGetTable($table, $columnName, $index, $dataSet, $message)) {
-	                        return(false);
-	                    }
-	                } else {
-	                    $columnName[$index] = null;
-	                    $dataSet[$index]    = null;
-	                }
+	            		if (!$this->_executeSqlGetTable($table, $columnName, $index, $dataSet, $message)) {
+	            			return(false);
+	            		}
+	            	} else {
+	            		$columnName[$index] = null;
+	            		$dataSet[$index]    = null;
+	            	}
 	                //
 	                //驍ｨ蜈域｣｡郢ｧ�ｻ郢晢ｿｽ繝ｨ郢ｧ�ｫ郢ｧ�ｦ郢晢ｽｳ郢ｧ�ｿ郢晢ｽｼ郢ｧ�､郢晢ｽｳ郢ｧ�ｯ郢晢ｽｪ郢晢ｽ｡郢晢ｽｳ郢晢ｿｽ
-	                $index++;
+	            	$index++;
 	            } while ($dataReturn->nextRowset());
 	        } else {
-	            return(false);
+	        	return(false);
 	        }
 	        //
 	        return(true);
 	    } catch (Exception $e) {
-	        $this->_error = '闔�沺謔�ｸｺ蜉ｱ竊醍ｸｺ�ｽ縺顔ｹ晢ｽｩ郢晢ｽｼ邵ｺ讙主験騾墓ｺ假ｼ�ｸｺ�ｾ邵ｺ蜉ｱ笳�' . "\n" . $e->getMessage();
-	        return(false);
+	    	$this->_error = '闔�沺謔�ｸｺ蜉ｱ竊醍ｸｺ�ｽ縺顔ｹ晢ｽｩ郢晢ｽｼ邵ｺ讙主験騾墓ｺ假ｼ�ｸｺ�ｾ邵ｺ蜉ｱ笳�' . "\n" . $e->getMessage();
+	    	return(false);
 	    }
 	}
 	/**
@@ -172,28 +173,28 @@ class Model_DAO extends Zend_Db_Table {
 	 * @access private
 	 */
 	private function _executeSqlGetColumnName($table, &$columnName, $index, &$message = '') {
-	    try {
-	        $columnName[$index] = array();
+		try {
+			$columnName[$index] = array();
 	        //
 	        //髯ｦ譴ｧ辟夊ｭ帛ｳｨ��-> 郢ｧ�ｫ郢晢ｽｩ郢晢ｿｽ骭占愾髢�ｽｾ�ｽ
-	        if (count($table) > 0) {
+			if (count($table) > 0) {
 	            //鬩滓ｦ奇ｿｽ邵ｺ�ｮ陷茨ｽｨ郢ｧ�ｭ郢晢ｽｼ陷ｿ髢�ｽｾ�ｽ
-	            $allKey = array_keys($table[0]);
+				$allKey = array_keys($table[0]);
 	            //郢ｧ�ｭ郢晢ｽｼ陷ｿ髢�ｽｾ�ｽ
-	            $count = 0;
-	            foreach ($allKey as $key) {
+				$count = 0;
+				foreach ($allKey as $key) {
 	                //郢ｧ�ｫ郢晢ｽｩ郢晢ｿｽ骭占ｭｬ�ｼ驍擾ｿｽ
-	                $columnName[$index][$count] = $key;
-	                $count++;
-	            }
+					$columnName[$index][$count] = $key;
+					$count++;
+				}
 	            //郢晢ｽ｡郢晢ｽ｢郢晢ｽｪ髫暦ｽ｣隰ｾ�ｾ
-	            unset($key);
-	        }
-	        return(true);
-	    } catch (Exception $e) {
-	        $message = '闔�沺謔�ｸｺ蜉ｱ竊醍ｸｺ�ｽ縺顔ｹ晢ｽｩ郢晢ｽｼ邵ｺ讙主験騾墓ｺ假ｼ�ｸｺ�ｾ邵ｺ蜉ｱ笳� '. "\n" . $e->getMessage();
-	        return(false);
-	    }
+				unset($key);
+			}
+			return(true);
+		} catch (Exception $e) {
+			$message = '闔�沺謔�ｸｺ蜉ｱ竊醍ｸｺ�ｽ縺顔ｹ晢ｽｩ郢晢ｽｼ邵ｺ讙主験騾墓ｺ假ｼ�ｸｺ�ｾ邵ｺ蜉ｱ笳� '. "\n" . $e->getMessage();
+			return(false);
+		}
 	}
 	
 	/**
@@ -207,33 +208,33 @@ class Model_DAO extends Zend_Db_Table {
 	 * @access private
 	 */
 	private function _executeSqlGetTable($table, $columnName, $index, &$dataSet, &$message = '') {
-	    try {
+		try {
 	        //髯ｦ譴ｧ辟夊ｭ帛ｳｨ��-> 郢晢ｿｽ�ｽ郢晄じﾎ晉ｹ晢ｿｽ�ｽ郢ｧ�ｿ陷ｿ髢�ｽｾ�ｽ
-	        if (count($table) > 0) {
-	            $count  = 0;
-	            $i      = 0;
-	            $len = 0;
+			if (count($table) > 0) {
+				$count  = 0;
+				$i      = 0;
+				$len = 0;
 	            //
-	            foreach ($table as $row) {
-	                $dataSet[$index][$count] = array();
+				foreach ($table as $row) {
+					$dataSet[$index][$count] = array();
 	                //
-	                $len = count($columnName[$index]);
-	                for ($i = 0; $i < $len; $i++) {
+					$len = count($columnName[$index]);
+					for ($i = 0; $i < $len; $i++) {
 	                    //陋ｻ諤憺倹郢ｧ雋樊ｸ慕ｸｺ�ｫ郢晢ｿｽ�ｽ郢ｧ�ｿ陷ｿ髢�ｽｾ�ｽ
-	                    $dataSet[$index][$count][$columnName[$index][$i]] = $row[$columnName[$index][$i]];
-	                }
-	                $count++;
-	            }
+						$dataSet[$index][$count][$columnName[$index][$i]] = $row[$columnName[$index][$i]];
+					}
+					$count++;
+				}
 	            //郢晢ｽ｡郢晢ｽ｢郢晢ｽｪ髫暦ｽ｣隰ｾ�ｾ
-	            unset($row);
-	        } else {
-	            $dataSet[$index] = null;
-	        }
-	        return(true);
-	    } catch (Exception $e) {
-	        $message = '闔�沺謔�ｸｺ蜉ｱ竊醍ｸｺ�ｽ縺顔ｹ晢ｽｩ郢晢ｽｼ邵ｺ讙主験騾墓ｺ假ｼ�ｸｺ�ｾ邵ｺ蜉ｱ笳�' . "\n" . $e->getMessage();
-	        return(false);
-	    }
+				unset($row);
+			} else {
+				$dataSet[$index] = null;
+			}
+			return(true);
+		} catch (Exception $e) {
+			$message = '闔�沺謔�ｸｺ蜉ｱ竊醍ｸｺ�ｽ縺顔ｹ晢ｽｩ郢晢ｽｼ邵ｺ讙主験騾墓ｺ假ｼ�ｸｺ�ｾ邵ｺ蜉ｱ笳�' . "\n" . $e->getMessage();
+			return(false);
+		}
 	}
 	/**dataSetCheck funtion
 	 * 
