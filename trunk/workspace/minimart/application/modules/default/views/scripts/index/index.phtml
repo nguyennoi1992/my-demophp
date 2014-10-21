@@ -21,15 +21,6 @@ echo $this->render("_templates/header.phtml");
     }
     window.onload=swapImage;
   </script>
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  
-  ga('create', 'UA-52574934-1', 'auto');
-  ga('send', 'pageview');
-</script>
 
 <div id="main">
   <div id="main_header">
@@ -95,314 +86,28 @@ echo $this->render("_templates/header.phtml");
               <div class="mainli" style="background: transparent;">
                 <a class="allstore" style="display: block;"></a>
               </div>
-              <div class="mainDiv" id="menucontents" >
+              <div class="mainDiv" id="menucontents">
                 <ul class="menu">
 
                 <?php foreach ($this->data_category as $key => $value){ ?>
+
                     <li class="menuLink">
                       <div class="store"><a href="#"><?php echo $value['category_name'];?></a>
                       <div class="subMenu">
                         <ul>
-                        Thử nghiệm
-                        <?php $data_product_type = $this->model_->execQuery("GET_PRODUC_TYPE_BY_CATEGORY_ID(".$value['category_id'].")");  ?>
-                          <?php foreach ($data_product_type as $key => $value_) { ?>
+
+                          <?php $data_product_type = $this->model_->execQuery('GET_PRODUC_TYPE_BY_CATEGORY_ID('.$value['category_id'].')'); 
+                          foreach ($data_product_type as $key => $value_) { ?>
+
                           <li><a href="#"><?php echo $value_['name'];?></a></li>
+
                           <?php } ?>
                         </ul>
                       </div>
                       </div>
                     </li>
+
                   <?php } ?>
-                    <!-- <li class="menuLink">
-                    <div class="store"><a href="/thuc pham tuoi song.html">Thực phẩm tươi sống</a>
-
-                      <div class="subMenu">
-                        <ul> 
-
-                          <li><a href="/thuy-hai-san.html">Thủy hải sản</a></li>
-
-                          <li><a href="/ca.html">Cá</a></li>
-
-                          <li><a href="/thit-bo.html">Thịt bò</a></li>
-
-                          <li><a href="/thit-lon.html">Thịt lợn</a></li>
-
-                          <li><a href="/thit-gia-cam.html">Thịt gia cầm</a></li>
-
-                          <li><a href="/thuc-pham-dong-lanh.html">Thực phẩm đông lạnh</a></li>
-
-                        </ul>
-                      </div>
-
-                    </div>
-                  </li>  -->
-
-                  <!-- <li class="menuLink">
-                    <div class="store"><a href="/thuc pham tuoi song.html">Thực phẩm tươi sống</a>
-
-                      <div class="subMenu">
-                        <ul> 
-
-                          <li><a href="/thuy-hai-san.html">Thủy hải sản</a></li>
-
-                          <li><a href="/ca.html">Cá</a></li>
-
-                          <li><a href="/thit-bo.html">Thịt bò</a></li>
-
-                          <li><a href="/thit-lon.html">Thịt lợn</a></li>
-
-                          <li><a href="/thit-gia-cam.html">Thịt gia cầm</a></li>
-
-                          <li><a href="/thuc-pham-dong-lanh.html">Thực phẩm đông lạnh</a></li>
-
-                        </ul>
-                      </div>
-
-                    </div>
-                  </li> 
-
-                  <li class="menuLink">
-                    <div class="store"><a href="/rau-cu-qua.html">Rau, củ, quả</a>
-
-                      <div class="subMenu">
-                        <ul> 
-
-                          <li><a href="/Trai-cay.html">Trái cây</a></li>
-
-                          <li><a href="/rau-cu.html">Rau củ</a></li>
-
-                          <li><a href="/rau-gia-vi.html">Rau gia vị</a></li>
-
-                          <li><a href="/nam.html">Nấm</a></li>
-
-                        </ul>
-                      </div>
-
-                    </div>
-                  </li> 
-
-                  <li class="menuLink">
-                    <div class="store"><a href="/do-dung-gia-dung.html">Đồ dùng gia dụng</a>
-
-                      <div class="subMenu">
-                        <ul> 
-
-                          <li><a href="/do-dung-nha-bep.html">Đồ dùng nhà bếp</a></li>
-
-                          <li><a href="/do-thuy-tinh-pha-le.html">Đồ thủy tinh, pha lê</a></li>
-
-                          <li><a href="/do-su.html">Đồ sứ</a></li>
-
-                          <li><a href="/binh-nuoc-khay-nhua.html">Bình nước, khay nhựa</a></li>
-
-                          <li><a href="/phich-nuoc.html">Phích nước</a></li>
-
-                          <li><a href="/hop-dung-thuc-an.html">Hộp đựng thực ăn</a></li>
-
-                          <li><a href="/nylon-bao-quan-thuc-an.html">Nylon bảo quản thức ăn</a></li>
-
-                          <li><a href="/pin-cac-loai.html">Pin các loại</a></li>
-
-                          <li><a href="/san-pham-su-dung-1-lan.html">Sản phẩm sử dụng 1 lần</a></li>
-
-                          <li><a href="/do-dung-khac.html">Đồ dùng khác</a></li>
-
-                        </ul>
-                      </div>
-
-                    </div>
-                  </li> 
-
-                  <li class="menuLink">
-                    <div class="store"><a href="/do uong banh-keo.html">Đồ uống, bánh kẹo</a>
-
-                      <div class="subMenu">
-                        <ul> 
-
-                          <li><a href="/do-uong.html">Đồ uống</a></li>
-
-                          <li><a href="/banh-keo-bim-bim.html">Bánh kẹo, Bim bim</a></li>
-
-                          <li><a href="/san-pham-khac.html">Sản phẩm khác</a></li>
-
-                        </ul>
-                      </div>
-
-                    </div>
-                  </li> 
-
-                  <li class="menuLink">
-                    <div class="store"><a href="/thuc-pham-an-lien.html">Thực phẩm ăn liền</a>
-
-                      <div class="subMenu">
-                        <ul> 
-
-                          <li><a href="/thuc pham che bien san.html">Thực phẩm chế biến sẵn</a></li>
-
-                          <li><a href="/My-an-lien.html">Mỳ ăn liền</a></li>
-
-                          <li><a href="/do-an-sang.html">Đồ ăn sáng</a></li>
-
-                        </ul>
-                      </div>
-
-                    </div>
-                  </li> 
-
-                  <li class="menuLink">
-                    <div class="store"><a href="/duong-sua-bot-ngu-coc.html">Đường, sữa, bột ngũ cốc</a>
-
-                    </div>
-                  </li> 
-
-                  <li class="menuLink">
-                    <div class="store"><a href="/gia-vi-dau-an mam.html">Gia vị, dầu ăn, mắm</a>
-
-                    </div>
-                  </li> 
-
-                  <li class="menuLink">
-                    <div class="store"><a href="/gao do-kho.html">Gạo, Đồ khô</a>
-
-                      <div class="subMenu">
-                        <ul> 
-
-                          <li><a href="/gao.html">Gạo</a></li>
-
-                          <li><a href="/ngu-coc.html">Ngũ Cốc</a></li>
-
-                          <li><a href="/khac.html">Khác</a></li>
-
-                        </ul>
-                      </div>
-
-                    </div>
-                  </li> 
-
-                  <li class="menuLink">
-                    <div class="store"><a href="/do-dien-gia-dung.html">Đồ điện gia dụng</a>
-
-                    </div>
-                  </li> 
-
-                  <li class="menuLink">
-                    <div class="store"><a href="/hoa-my-pham.html">Hóa mỹ phẩm</a>
-
-                      <div class="subMenu">
-                        <ul> 
-
-                          <li><a href="/cham-soc-rang-mieng.html">Chăm sóc răng miệng</a></li>
-
-                          <li><a href="/nuoc-rua-tay.html">Nước rửa tay</a></li>
-
-                          <li><a href="/bot-giat-tay-xa-vai.html">Bột giặt, tẩy, xả vải</a></li>
-
-                          <li><a href="/chat-tay-rua-khu-mui.html">Chất tẩy rửa, khử mùi</a></li>
-
-                          <li><a href="/nuoc-rua-chen.html">Nước rửa chén</a></li>
-
-                          <li><a href="/diet-con-trung.html">Diệt côn trùng</a></li>
-
-                        </ul>
-                      </div>
-
-                    </div>
-                  </li> 
-
-                  <li class="menuLink">
-                    <div class="store"><a href="/my-pham.html">Mỹ phẩm</a>
-
-                      <div class="subMenu">
-                        <ul> 
-
-                          <li><a href="/san-pham-trang-diem.html">Sản phẩm trang điểm</a></li>
-
-                          <li><a href="/san-pham-cham-soc-toc.html">Sản phẩm chăm sóc tóc</a></li>
-
-                          <li><a href="/san-pham-cham-soc-da-.html">Sản phẩm chăm sóc da</a></li>
-
-                          <li><a href="/lan-khu-mui-nuoc-hoa.html">Lăn khử mùi, nước hoa</a></li>
-
-                          <li><a href="/bot-dao-cao-rau.html">Bọt, dao cạo râu</a></li>
-
-                        </ul>
-                      </div>
-
-                    </div>
-                  </li> 
-
-                  <li class="menuLink">
-                    <div class="store"><a href="/khan-giay.html">Khăn giấy</a>
-
-                      <div class="subMenu">
-                        <ul> 
-
-                          <li><a href="/giay-an.html">Giấy ăn</a></li>
-
-                          <li><a href="/giay-ve-sinh.html">Giấy vệ sinh</a></li>
-
-                          <li><a href="/khan-giay-uot.html">Khăn giấy ướt</a></li>
-
-                          <li><a href="/bvs-ta-giay-nguoi-lon.html">BVS, tã giấy người lớn</a></li>
-
-                        </ul>
-                      </div>
-
-                    </div>
-                  </li> 
-
-                  <li class="menuLink">
-                    <div class="store"><a href="/san-pham-may-mac.html">Sản phẩm may mặc</a>
-
-                    </div>
-                  </li> 
-
-                  <li class="menuLink">
-                    <div class="store"><a href="/me va be.html">Mẹ và Bé</a>
-
-                      <div class="subMenu">
-                        <ul> 
-
-                          <li><a href="/sua-bot.html">Sữa bột</a></li>
-
-                          <li><a href="/bot-an-damtp-dduong.html">Bột ăn dặm,TP D.dưỡng</a></li>
-
-                          <li><a href="/bim-cac-loai.html">Bỉm các loại</a></li>
-
-                          <li><a href="/san-pham-cham-soc-be.html">Sản phẩm chăm sóc bé</a></li>
-
-                          <li><a href="/do-choi.html">Đồ chơi</a></li>
-
-                        </ul>
-                      </div>
-
-                    </div>
-                  </li> 
-
-                  <li class="menuLink">
-                    <div class="store"><a href="/Hang-nhap-khau-duc-va-chau-au.html">Hàng nhập khẩu</a>
-
-                      <div class="subMenu">
-                        <ul> 
-
-                          <li><a href="/hang-nhap-khau-uc.html">Hàng nhập khẩu Úc</a></li>
-
-                          <li><a href="/hang-nhap-khau-han-quoc.html">Hàng nhập khẩu Hàn Quốc</a></li>
-
-                          <li><a href="/hang-nhap-khau-duc.html">Hàng nhập khẩu Đức</a></li>
-
-                        </ul>
-                      </div>
-
-                    </div>
-                  </li> 
-
-                  <li class="menuLink">
-                    <div class="store"><a href="/thuc-an-cho-vat-nuoi.html">Thức ăn cho vật nuôi</a>
-
-                    </div>
-                  </li>  -->
-
                 </ul>
               </div><!--mainDiv-->
             </li>
