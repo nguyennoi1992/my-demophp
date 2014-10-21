@@ -3,7 +3,7 @@ class IndexController extends Zend_Controller_Action {
     public function init() {
        // $this->_sess=new Zend_Session_Namespace();
         /* Initialize action controller here */
-        $model = new Model_DBCommon();
+        // $model = new Model_DBCommon();
         //$query=$model->getSql('SPC_GET_LIST_USER');
         // $resuilt=$model->selectDB('test','id');
 
@@ -34,7 +34,9 @@ class IndexController extends Zend_Controller_Action {
     }
 
     public function indexAction() {
-        // "ok";
+        $model = new Model_DBCommon();
+        $this->view->model_ = new Model_DBCommon();
+        $this->view->data_category=$model->execQuery('CALL GET_ALL_CATEGORY');
     }
     
 }
