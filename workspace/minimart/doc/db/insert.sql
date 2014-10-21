@@ -1,4 +1,4 @@
-# Insert data into table category
+-- Insert data into table category
 
 INSERT INTO category (category_id, category_name, description)
 VALUES (1, "Thực phẩm tươi sống", ""),
@@ -18,7 +18,7 @@ VALUES (1, "Thực phẩm tươi sống", ""),
 		(15, "Hàng nhập khẩu", ""),
 		(16, "Thức ăn cho vật nuôi", "");
 		
-# Insert data into table product_type
+-- Insert data into table product_type
 
 INSERT INTO product_type (id, name, description, category_id)
 VALUES (1, "Thủy hải sản", "", 1),
@@ -74,7 +74,7 @@ VALUES (1, "Thủy hải sản", "", 1),
 		(51, "Hàng nhập khẩu Hàn Quốc", "", 15),
 		(52, "Hàng nhập khẩu Đức", "", 15);
 
-# Insert data into table product
+-- Insert data into table product
 
 INSERT INTO product (product_id, product_name, origin, price, quantity, update_time, rate, status, product_type, selled)
 VALUES (1, "Bắp đùi/tay bò tinh loại 1", "", 30000, 100, "2014-10-12", 0.0, 1, 3, 100),
