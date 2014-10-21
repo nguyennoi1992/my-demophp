@@ -1,8 +1,8 @@
-###########################
-# Execute in table category
-###########################
+--  --------------------------------------------------------------
+-- Execute in table category
+--  --------------------------------------------------------------
 
-# Procedure get all category
+-- Procedure get all category
 
 DROP PROCEDURE IF EXISTS GET_ALL_CATEGORY;
 DELIMITER //
@@ -12,7 +12,7 @@ BEGIN
 END //
 DELIMITER ;
 
-# Procedure in table category with condition
+-- Procedure in table category with condition
 DROP PROCEDURE IF EXISTS GET_BY_CATEGORY_ID;
 DELIMITER //
 CREATE PROCEDURE GET_BY_CATEGORY_ID(id_ int)
@@ -21,11 +21,11 @@ BEGIN
 END //
 DELIMITER ;
 
-################################
-# Execute in table product_type
-################################
+--  --------------------------------------------------------------
+-- Execute in table product_type
+--  --------------------------------------------------------------
 
-# Procedure get all product_type
+-- Procedure get all product_type
 
 DROP PROCEDURE IF EXISTS GET_ALL_PRODUCT_TYPE;
 DELIMITER //
@@ -35,7 +35,7 @@ BEGIN
 END //
 DELIMITER ;
 
-# Procedure in table product_type with condition
+-- Procedure in table product_type with condition
 DROP PROCEDURE IF EXISTS GET_BY_PRODUCT_TYPE_ID;
 DELIMITER //
 CREATE PROCEDURE GET_BY_PRODUCT_TYPE_ID(id_ int)
@@ -44,7 +44,7 @@ BEGIN
 END //
 DELIMITER ;
 
-# Procedure in table product_type with condition
+-- Procedure in table product_type with condition
 DROP PROCEDURE IF EXISTS GET_PRODUCT_TYPE_BY_CATEGORY_ID;
 DELIMITER //
 CREATE PROCEDURE GET_PRODUCT_TYPE_BY_CATEGORY_ID(category_id_ int)
@@ -53,11 +53,11 @@ BEGIN
 END //
 DELIMITER ;
 
-################################
-# Execute in table product
-################################
+--  --------------------------------------------------------------
+-- Execute in table product
+--  --------------------------------------------------------------
 
-# Procedure get all product
+-- Procedure get all product
 
 DROP PROCEDURE IF EXISTS GET_ALL_PRODUCT;
 DELIMITER //
@@ -67,7 +67,7 @@ BEGIN
 END //
 DELIMITER ;
 
-# Procedure in table product with condition
+-- Procedure in table product with condition
 DROP PROCEDURE IF EXISTS GET_BY_PRODUCT_ID;
 DELIMITER //
 CREATE PROCEDURE GET_BY_PRODUCT_ID(id_ int)
@@ -77,7 +77,7 @@ END //
 DELIMITER ;
 
 
-# Procedure in table product with condition
+-- Procedure in table product with condition
 DROP PROCEDURE IF EXISTS GET_PRODUCT_BY_PRODUCT_TYPE_ID;
 DELIMITER //
 CREATE PROCEDURE GET_PRODUCT_BY_PRODUCT_TYPE_ID(product_type_ int)
