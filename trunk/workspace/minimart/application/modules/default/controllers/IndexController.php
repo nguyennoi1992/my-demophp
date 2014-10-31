@@ -29,7 +29,7 @@ class IndexController extends Zend_Controller_Action {
 
         $this->view->headLink ()->appendStylesheet ( $baseurl . "/templates/default/script/styleNews.css" );
         $this->view->headLink ()->appendStylesheet ( $baseurl . "/templates/default/script/boxy.css" );       
-        $this->view->headLink ()->appendStylesheet ( $baseurl . "/templates/default/script/styleNews.css" );
+        $this->view->headLink ()->appendStylesheet ( $baseurl . "/templates/default/script/style.css" );
         $this->view->headLink ()->appendStylesheet ( $baseurl . "/templates/default/script/fancybox.css" );       
         $this->view->headLink ()->appendStylesheet ( $baseurl . "/templates/default/script/bootstrap.min.css" );       
 
@@ -37,7 +37,6 @@ class IndexController extends Zend_Controller_Action {
         $this->view->headscript ()->appendFile ( $baseurl . "/templates/default/js/jquery.js", "text/javascript" );
         $this->view->headscript ()->appendFile ( $baseurl . "/templates/default/js/fancybox.js", "text/javascript" );
         $this->view->headscript ()->appendFile ( $baseurl . "/templates/default/js/common.js", "text/javascript" );
-        echo $baseurl;
         $this->view->headscript ()->appendFile ( $baseurl . "/templates/default/js/bootstrap.min.js", "text/javascript" );
         $this->view->headscript ()->appendFile ( $baseurl . "/templates/default/js/common_002.js", "text/javascript" );
         $this->view->headscript ()->appendFile ( $baseurl . "/templates/includes/js/common.js", "text/javascript" );
