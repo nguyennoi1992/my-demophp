@@ -53,7 +53,7 @@ class IndexController extends Zend_Controller_Action {
         $model = new Model_DBCommon();
         $this->view->model_ = new Model_DBCommon();
         $this->view->data_category=$model->execQuery('CALL GET_ALL_CATEGORY');
-        // $this->view->data_product_type=$model->execQuery('CALL GET_PRODUC_TYPE_BY_CATEGORY_ID(0)');
+        $this->view->data_product_type=$model->execQuery('CALL GET_PRODUCT_TYPE_BY_CATEGORY_ID(1)');
     }
     
 }

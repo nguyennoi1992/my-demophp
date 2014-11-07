@@ -94,12 +94,12 @@ echo $this->render("_templates/header.phtml");
                       <div class="subMenu">
                         <ul>
 
-                          <?php $data_product_type = $this->model_->execQuery('CALL GET_PRODUC_TYPE_BY_CATEGORY_ID('.$value['category_id'].')'); 
-                          foreach ($data_product_type as $key => $value_) { ?>
+                          // <?php $data_product_type = $this->model_->execQuery('CALL GET_PRODUC_TYPE_BY_CATEGORY_ID('.$value['category_id'].')'); 
+                          foreach ($this->data_product_type as $key => $value_) { ?>
 
                           <li><a href="#"><?php echo $value_['name'];?></a></li>
 
-                          <?php } ?>
+                          // <?php } ?>
                         </ul>
                       </div>
                       </div>
